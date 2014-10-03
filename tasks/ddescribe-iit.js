@@ -6,12 +6,13 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('ddescribe-iit', 'Check for instances of ddescribe and iit', function () {
     var failed = false;
+    var options = this.options();
 
     var done = this.async();
     grunt.util.async.forEach(this.filesSrc, function (file, next) {
       if (grunt.file.isFile(file)) {
         var fileContents = grunt.file.read(file);
-        var errs = checkFile(fileContents);
+        var errs = checkFile(fileContents, options);
         if (errs) {
           errs.forEach(function (err) {
             grunt.log.errorlns(file + ' has `' + err.str + '` at line ' + err.line);

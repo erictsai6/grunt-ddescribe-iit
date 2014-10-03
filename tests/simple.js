@@ -45,6 +45,15 @@ describe('check-file', function () {
     should.equal(problems[0].line, 6);
   });
 
+  it('should return all line numbers if there are multiple problems', function() {
+    var problems = checkFile("ddescribe('this is something')\niit('iit')\nddescribe('this is another thing')");
+    problems.length.should.equal(3);
+    should.equal(problems[0].line, 1);
+    should.equal(problems[1].line, 2);
+    should.equal(problems[2].line, 3);
+
+  });
+
   it('should not treat `exit` as `xit`', function () {
     should.not.exist(checkFile("exit()"));
   });

@@ -16,6 +16,10 @@
   "smarttabs": true,
   "globals": {
     "describe": false,
-    "it": false
+    "it": false,
+    "iit": false,
+    "xit": false,
+    "ddescribe": false,
+    "xdescribe": false
   }
 }
